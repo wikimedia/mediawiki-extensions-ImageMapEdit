@@ -1,6 +1,6 @@
 {
 	"name": "ImageMapEdit",
-	"version": "2.23.2",
+	"version": "3.0.0",
 	"author": [
 		"Marc Reymann",
 		"Peter Schlömer",
@@ -12,7 +12,7 @@
 	"license-name": "GPL-3.0-only",
 	"type": "parserhook",
 	"requires": {
-		"MediaWiki": ">= 1.29.0"
+		"MediaWiki": ">= 1.39.0"
 	},
 	"config_prefix": "ime",
 	"config": {
