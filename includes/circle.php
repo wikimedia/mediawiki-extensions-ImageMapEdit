@@ -6,7 +6,7 @@
   Released under the GNU General Public License (GPL), version 2. See
   LICENSE for the full text
 */
-
+// phpcs:disable MediaWiki.Usage.SuperGlobalsUsage.SuperGlobals
 // Parameters
 
 $radius = intval( $_GET['radius'] );

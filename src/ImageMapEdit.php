@@ -4,9 +4,16 @@ use MediaWiki\MediaWikiServices;
 
 class ImageMapEdit {
 
+	/**
+	 * @param \ParserOutput &$oParserOutput
+	 * @param string &$sText
+	 * @return void
+	 */
 	public static function onOutputPageBeforeHTML( &$oParserOutput, &$sText ) {
 		$oCurrentTitle = $oParserOutput->getTitle();
-		if ( $oCurrentTitle === null || $oCurrentTitle->getNamespace() != NS_FILE || $oParserOutput->getRequest()->getVal( 'action', 'view' ) != 'view' ) {
+		if ( $oCurrentTitle === null
+			|| $oCurrentTitle->getNamespace() != NS_FILE
+			|| $oParserOutput->getRequest()->getVal( 'action', 'view' ) != 'view' ) {
 			return true;
 		}
 		$repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
@@ -25,7 +32,8 @@ class ImageMapEdit {
 	 * @return bool
 	 */
 	public static function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
-		if ( $oOutputPage->getTitle()->getNamespace() != NS_FILE || $oOutputPage->getRequest()->getVal( 'action', 'view' ) != 'view' ) {
+		if ( $oOutputPage->getTitle()->getNamespace() != NS_FILE
+			|| $oOutputPage->getRequest()->getVal( 'action', 'view' ) != 'view' ) {
 			return true;
 		}
 

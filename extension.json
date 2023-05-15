@@ -25,7 +25,7 @@
 		"ImageMapEdit": "ImageMapEdit.i18n.php"
 	},
 	"AutoloadClasses": {
-		"ImageMapEdit": "ImageMapEdit.class.php"
+		"ImageMapEdit": "src/ImageMapEdit.php"
 	},
 	"ResourceModules": {
 		"ext.imagemapedit": {

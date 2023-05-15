@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:disable MediaWiki.Usage.SuperGlobalsUsage.SuperGlobals
 header( 'Content-type: application/x-javascript; encoding=utf8' );
 
 $lang = $_GET['lang'];
