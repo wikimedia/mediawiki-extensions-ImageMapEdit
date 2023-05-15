@@ -5,20 +5,20 @@ use MediaWiki\MediaWikiServices;
 class ImageMapEdit {
 
 	/**
-	 * @param \ParserOutput &$oParserOutput
-	 * @param string &$sText
+	 * @param \ParserOutput &$parserOutput
+	 * @param string &$text
 	 * @return void
 	 */
-	public static function onOutputPageBeforeHTML( &$oParserOutput, &$sText ) {
-		$oCurrentTitle = $oParserOutput->getTitle();
-		if ( $oCurrentTitle === null
-			|| $oCurrentTitle->getNamespace() != NS_FILE
-			|| $oParserOutput->getRequest()->getVal( 'action', 'view' ) != 'view' ) {
+	public static function onOutputPageBeforeHTML( &$parserOutput, &$text ) {
+		$currentTitle = $parserOutput->getTitle();
+		if ( $currentTitle === null
+			|| $currentTitle->getNamespace() != NS_FILE
+			|| $parserOutput->getRequest()->getVal( 'action', 'view' ) != 'view' ) {
 			return true;
 		}
 		$repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
-		$oCurrentFile = $repoGroup->findFile( $oCurrentTitle );
-		if ( $oCurrentFile && !$oCurrentFile->canRender() ) {
+		$currentFile = $repoGroup->findFile( $currentTitle );
+		if ( $currentFile && !$currentFile->canRender() ) {
 			return true;
 		}
 		return true;
@@ -26,19 +26,19 @@ class ImageMapEdit {
 
 	/**
 	 *
-	 * @param OutputPage &$oOutputPage
-	 * @param Skin &$oSkin
+	 * @param OutputPage &$outputPage
+	 * @param Skin &$skin
 	 *
 	 * @return bool
 	 */
-	public static function onBeforePageDisplay( &$oOutputPage, &$oSkin ) {
-		if ( $oOutputPage->getTitle()->getNamespace() != NS_FILE
-			|| $oOutputPage->getRequest()->getVal( 'action', 'view' ) != 'view' ) {
+	public static function onBeforePageDisplay( &$outputPage, &$skin ) {
+		if ( $outputPage->getTitle()->getNamespace() != NS_FILE
+			|| $outputPage->getRequest()->getVal( 'action', 'view' ) != 'view' ) {
 			return true;
 		}
 
-		$user = $oSkin->getUser();
-		$title = $oSkin->getTitle();
+		$user = $skin->getUser();
+		$title = $skin->getTitle();
 
 		$titleParts = explode( '.', $title->getText() );
 		$fileType = $titleParts[count( $titleParts ) - 1];
@@ -48,7 +48,7 @@ class ImageMapEdit {
 			return true;
 		}
 
-		$oOutputPage->addModules( 'ext.imagemapedit' );
+		$outputPage->addModules( 'ext.imagemapedit' );
 
 		return true;
 	}
