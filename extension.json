@@ -8,7 +8,7 @@
 		"[https://www.hallowelt.com Hallowelt GmbH]"
 
 	],
-	"descriptionmsg": "imagemapedit-extension-description",
+	"descriptionmsg": "imagemapedit-desc",
 	"license-name": "GPL-3.0-only",
 	"type": "parserhook",
 	"requires": {
@@ -21,8 +21,10 @@
 			"value": [ "png", "gif", "jpg", "jpeg" ]
 		}
 	},
-	"ExtensionMessagesFiles": {
-		"ImageMapEdit": "ImageMapEdit.i18n.php"
+	"MessagesDirs": {
+		"ImageMapEdit": [
+			"i18n"
+		]
 	},
 	"AutoloadClasses": {
 		"ImageMapEdit": "src/ImageMapEdit.php"
