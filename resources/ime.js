@@ -823,3 +823,22 @@ function ime_findATag(node) {
 	}
 	return a;
 }
+
+function ime_callHandler( element ) {
+	var handlerName = $( element ).data( 'handler-name' );
+	var handlerArgs = $( element ).data( 'handler-args' );
+	var handler = window[ handlerName ];
+	if ( typeof handler === 'function' ) {
+		handler.apply( window, handlerArgs );
+	}
+	return false;
+}
+
+$(document).on( 'click', '#ime *[data-handler-type=click]', function ( e ) {
+	e.defaultPrevented = true;
+	return ime_callHandler( this );
+});
+$(document).on( 'change', '#ime *[data-handler-type=change]', function ( e ) {
+	e.defaultPrevented = true;
+	return ime_callHandler( this );
+});
