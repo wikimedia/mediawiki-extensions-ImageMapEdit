@@ -303,7 +303,8 @@ function ime_getEvent(e) {
 
 function ime_eventGetX(e) {
 	if (typeof(e.layerX)!='undefined') {
-		return Math.round(e.layerX / ime_scale);
+		var x = Math.round( e.layerX / ime_scale );
+		return Math.max( 0, x );
 	}
 	if (typeof(e.offsetX)!='undefined') {
 		return Math.round(e.offsetX / ime_scale);
@@ -315,7 +316,8 @@ function ime_eventGetX(e) {
 
 function ime_eventGetY(e) {
 	if (typeof(e.layerY)!='undefined') {
-		return Math.round(e.layerY / ime_scale);
+		var y = Math.round( e.layerY / ime_scale );
+		return Math.max( 0, y );
 	}
 	if (typeof(e.offsetY)!='undefined') {
 		return Math.round(e.offsetY / ime_scale);
