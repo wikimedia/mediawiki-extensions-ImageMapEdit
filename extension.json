@@ -6,8 +6,8 @@
 		"Peter Schlömer",
 		"Tobias Weichart",
 		"[https://www.hallowelt.com Hallowelt GmbH]"
-
 	],
+	"url": "https://www.mediawiki.org/wiki/Extension:ImageMapEdit",
 	"descriptionmsg": "imagemapedit-desc",
 	"license-name": "GPL-3.0-only",
 	"type": "parserhook",
