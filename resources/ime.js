@@ -13,12 +13,12 @@
 	Constants
 */
 
-var IME_TEMPLATE = mw.config.get( 'wgScriptPath' ) + '/extensions/ImageMapEdit/includes/template.php';
-var IME_TRANSLATIONS = mw.config.get( 'wgScriptPath' ) + '/extensions/ImageMapEdit/includes/translations.php?lang=' + mw.config.get( 'wgUserLanguage' );
+const IME_TEMPLATE = mw.config.get( 'wgScriptPath' ) + '/extensions/ImageMapEdit/includes/template.php';
+const IME_TRANSLATIONS = mw.config.get( 'wgScriptPath' ) + '/extensions/ImageMapEdit/includes/translations.php?lang=' + mw.config.get( 'wgUserLanguage' );
 
 // Scripts to create the circle and polygon images
-var IME_CIRCLESCRIPT = mw.config.get( 'wgScriptPath' ) + '/extensions/ImageMapEdit/includes/circle.php';
-var IME_POLYSCRIPT = mw.config.get( 'wgScriptPath' ) + '/extensions/ImageMapEdit/includes/poly.php';
+const IME_CIRCLESCRIPT = mw.config.get( 'wgScriptPath' ) + '/extensions/ImageMapEdit/includes/circle.php';
+const IME_POLYSCRIPT = mw.config.get( 'wgScriptPath' ) + '/extensions/ImageMapEdit/includes/poly.php';
 
 /*
 	Imports
@@ -37,16 +37,16 @@ mw.loader.load(IME_TRANSLATIONS);
 /*
 	Global variables
 */
-var ime_areas = Array();
-var ime_currentlyEditing = -1;
-var ime_width;
-var ime_height;
-var ime_scale;
+const ime_areas = Array();
+let ime_currentlyEditing = -1;
+let ime_width;
+let ime_height;
+let ime_scale;
 
 /*
 	Start Initialization if this is an image page and there actually is an image
 */
-$(document).ready(function(){
+$(document).ready(() => {
 	// Determine whether we are on an image page. Namespace must be 6 and action view
 	if ( mw.config.get( 'wgNamespaceNumber' ) == 6 && mw.config.get( 'wgAction' ) == 'view' ) {
 		// If we can a div with id file, we initialize
@@ -60,12 +60,12 @@ $(document).ready(function(){
 	Create a new div element object with an id.
 */
 function ime_htmlNewDiv(id) {
-	var div = document.createElement('div');
+	const div = document.createElement('div');
 	if (id) div.id = id;
 	return div;
 }
 
-var imeButton = null;
+let imeButton = null;
 /*
 	Initialization, part 1: Tries to find image and uses a XMLHttpRequest
 	to download information about the image. When this is done (it's an
@@ -73,25 +73,25 @@ var imeButton = null;
 	using ime_init2().
 */
 function ime_init1() {
-	var divFile = document.getElementById('file');
+	const divFile = document.getElementById('file');
 	if (!divFile) {
 		ime_error(ime_translations['error_imagenotfound'] + ' (ime_init1,divFile=null)');
 		return;
 	}
 
-	var a = ime_findATag(divFile);
+	const a = ime_findATag(divFile);
 	if (!a) {
 		ime_error(ime_translations['error_imagenotfound'] + ' (ime_init1,a=null)');
 		return;
 	}
 
-	var img = a.firstChild;
+	const img = a.firstChild;
 	if (!img) {
 		ime_error(ime_translations['error_imagenotfound'] + ' (ime_init1,img=null)');
 		return;
 	}
 
-	var url = mw.config.get( 'wgScriptPath' ) + '/api.php?format=xml&action=query&prop=imageinfo&iiprop=size&titles=' + mw.config.get( 'wgPageName' );
+	const url = mw.config.get( 'wgScriptPath' ) + '/api.php?format=xml&action=query&prop=imageinfo&iiprop=size&titles=' + mw.config.get( 'wgPageName' );
 
 	imeButton = new OO.ui.ButtonWidget( {
 		label: 'Image map',
@@ -101,8 +101,8 @@ function ime_init1() {
 	imeButton.on( 'click', ime_init2 );
 	$( '#file' ).append( imeButton.$element );
 
-	$.get(url, function(response) {
-		var iiAttr = response.getElementsByTagName('ii')[0].attributes;
+	$.get(url, (response) => {
+		const iiAttr = response.getElementsByTagName('ii')[0].attributes;
 		ime_width = iiAttr.getNamedItem('width').nodeValue;
 		ime_height = iiAttr.getNamedItem('height').nodeValue;
 
@@ -121,12 +121,12 @@ function ime_init2() {
 	// Remove UI that might interfere with this code
 	ime_removeOtherUIElements();
 
-	var divFile = document.getElementById('file');
-	var tempNode = divFile.firstChild;
-	var a = ime_findATag(tempNode);
-	var img = a.firstChild;
+	const divFile = document.getElementById('file');
+	const tempNode = divFile.firstChild;
+	const a = ime_findATag(tempNode);
+	const img = a.firstChild;
 
-	var divImeContainer = ime_htmlNewDiv('imeContainer');
+	const divImeContainer = ime_htmlNewDiv('imeContainer');
 	divImeContainer.style.position = 'relative';
 
 	// Move image from within link to outside
@@ -148,7 +148,7 @@ function ime_init2() {
 		divImeContainer.style.overflow = 'auto';
 	}
 
-	var divImePreview = ime_htmlNewDiv('imePreview');
+	const divImePreview = ime_htmlNewDiv('imePreview');
 	divImePreview.style.position = 'absolute';
 	divImePreview.style.top = '0';
 	divImePreview.style.left = '0';
@@ -159,7 +159,7 @@ function ime_init2() {
 	divImeContainer.appendChild(divImePreview);
 	divImeContainer.appendChild(img);
 
-	var divIme = ime_htmlNewDiv('ime');
+	const divIme = ime_htmlNewDiv('ime');
 	divFile.appendChild(divIme);
 
 	imeButton.setDisabled( true );
@@ -179,11 +179,11 @@ function ime_init2() {
 */
 function ime_translate() {
 	if (ime_translations) {
-		for (var i in ime_translations) {
-			var elements = ime_getElementsByClassName('ime_t_' + i);
+		for (const i in ime_translations) {
+			const elements = ime_getElementsByClassName('ime_t_' + i);
 			if (elements.length > 0) {
-				var text = ime_translations[i];;
-				for (var j=0; j<elements.length; j++) {
+				const text = ime_translations[i];;
+				for (let j=0; j<elements.length; j++) {
 					elements[j].innerHTML = text;
 				}
 			}
@@ -209,11 +209,11 @@ function ime_getElementsByClassName(className) {
 	place to put it does not exist - by showing an alert box.
 */
 function ime_error(message) {
-	var jqFile = $('#file');
-	var jqIme = $('#ime');
+	const jqFile = $('#file');
+	const jqIme = $('#ime');
 
 	if (jqFile.length !== 0) {
-		var jqImeError = $('<p/>')
+		const jqImeError = $('<p/>')
 		.css({
 			'color' : 'darkred',
 			'background' : 'white',
@@ -303,7 +303,7 @@ function ime_getEvent(e) {
 
 function ime_eventGetX(e) {
 	if (typeof(e.layerX)!='undefined') {
-		var x = Math.round( e.layerX / ime_scale );
+		const x = Math.round( e.layerX / ime_scale );
 		return Math.max( 0, x );
 	}
 	if (typeof(e.offsetX)!='undefined') {
@@ -316,7 +316,7 @@ function ime_eventGetX(e) {
 
 function ime_eventGetY(e) {
 	if (typeof(e.layerY)!='undefined') {
-		var y = Math.round( e.layerY / ime_scale );
+		const y = Math.round( e.layerY / ime_scale );
 		return Math.max( 0, y );
 	}
 	if (typeof(e.offsetY)!='undefined') {
@@ -337,20 +337,20 @@ function ime_eventGetButton(e) {
 }
 
 function ime_mouseEventClear() {
-	var img = document.getElementById('imeImg');
+	const img = document.getElementById('imeImg');
 	img.onmousedown = null;
 	img.style.cursor = '';
 }
 
 function ime_mouseEventSet(func) {
-	var img = document.getElementById('imeImg');
+	const img = document.getElementById('imeImg');
 	img.onmousedown = func;
 	img.style.cursor = 'crosshair';
 }
 
 function ime_eventRect(e) {
 	e = ime_getEvent(e);
-	var button = ime_eventGetButton(e);
+	const button = ime_eventGetButton(e);
 	if (button==1) {
 		document.ime.areaRectLeft.value = ime_eventGetX(e);
 		document.ime.areaRectTop.value = ime_eventGetY(e);
@@ -365,14 +365,14 @@ function ime_eventRect(e) {
 
 function ime_eventCircle(e) {
 	e = ime_getEvent(e);
-	var button = ime_eventGetButton(e);
+	const button = ime_eventGetButton(e);
 	if (button==1) {
 		document.ime.areaCircleX.value = ime_eventGetX(e);
 		document.ime.areaCircleY.value = ime_eventGetY(e);
 	}
 	else if (button==2 || button==3) {
-		var a = (ime_eventGetX(e) - parseInt(document.ime.areaCircleX.value));
-		var b = (ime_eventGetY(e) - parseInt(document.ime.areaCircleY.value));
+		const a = (ime_eventGetX(e) - parseInt(document.ime.areaCircleX.value));
+		const b = (ime_eventGetY(e) - parseInt(document.ime.areaCircleY.value));
 		document.ime.areaCircleRadius.value = Math.round(Math.sqrt(a*a + b*b));
 	}
 	ime_saveArea();
@@ -381,7 +381,7 @@ function ime_eventCircle(e) {
 
 function ime_eventPoly(e) {
 	e = ime_getEvent(e);
-	var button = ime_eventGetButton(e);
+	const button = ime_eventGetButton(e);
 	if (button==1) {
 		area = ime_areas[ime_currentlyEditing];
 		area.coords.points.push(ime_eventGetX(e));
@@ -392,7 +392,7 @@ function ime_eventPoly(e) {
 }
 
 function ime_newArea(shape) {
-	var area = new ime_Area(shape);
+	const area = new ime_Area(shape);
 	area.shape = shape;
 	ime_areas.push(area);
 
@@ -408,8 +408,8 @@ function ime_updateAreas() {
 }
 
 function ime_updateResult() {
-	var arr = document.ime.imageDescriptionPos;
-	var imageDescriptionPos = arr[0].value;
+	const arr = document.ime.imageDescriptionPos;
+	let imageDescriptionPos = arr[0].value;
 	for (var i=1; i<arr.length; i++) {
 		if (arr[i].checked) {
 			imageDescriptionPos = arr[i].value;
@@ -417,13 +417,13 @@ function ime_updateResult() {
 		}
 	}
 
-	var result = Array();
+	const result = Array();
 	result.push('<imagemap>');
 	result.push( mw.config.get( 'wgPageName' ) + '|' + document.ime.imageDescription.value );
 	result.push('');
 	for (var i=0; i<ime_areas.length; i++) {
-		var coords = ime_areas[i].coords;
-		var s = '';
+		const coords = ime_areas[i].coords;
+		let s = '';
 		if (ime_areas[i].shape=='rect') {
 			s = coords.left + ' ' + coords.top + ' ' + coords.right + ' ' + coords.bottom;
 		}
@@ -439,7 +439,7 @@ function ime_updateResult() {
 	result.push('desc ' + imageDescriptionPos);
 	result.push('</imagemap>');
 
-	var preResult = document.getElementById('imeResult');
+	const preResult = document.getElementById('imeResult');
 
 	while (preResult.lastChild) {
 		preResult.removeChild(preResult.lastChild);
@@ -452,13 +452,13 @@ function ime_updateResult() {
 }
 
 function ime_updateMap() {
-	var preview = document.getElementById('imePreview');
-	var img = document.getElementById('imeImg');
+	const preview = document.getElementById('imePreview');
+	const img = document.getElementById('imeImg');
 
 	// Remove areas from map which are out of range
 	for (var i=0; i<preview.childNodes.length; i++) {
-		var child = preview.childNodes[i];
-		var id = parseInt(child.id.substring(10));
+		const child = preview.childNodes[i];
+		const id = parseInt(child.id.substring(10));
 		if (id>=ime_areas.length) {
 			preview.removeChild(child);
 			i--;
@@ -467,7 +467,7 @@ function ime_updateMap() {
 
 	for (var i=0; i<ime_areas.length; i++) {
 		// Get existing DIV
-		var area = ime_areas[i];
+		const area = ime_areas[i];
 		var div = document.getElementById('imePreview' + i);
 
 		// If it does not exist exists, create a new one and set style
@@ -480,7 +480,7 @@ function ime_updateMap() {
 			div.style.filter = 'alpha(opacity=50)';
 		}
 
-		var coords = area.coords;
+		const coords = area.coords;
 		if (area.shape == 'rect') {
 			div.className = 'previewRect';
 			// Only if valid coordinates were given, draw
@@ -500,9 +500,9 @@ function ime_updateMap() {
 		else if (area.shape == 'circle') {
 			div.className = 'previewCircle';
 			div.style.backgroundRepeat = 'no-repeat';
-			var left = Math.round(ime_scale * coords.x) - Math.round(ime_scale * coords.radius);
-			var top = Math.round(ime_scale * coords.y) - Math.round(ime_scale * coords.radius);
-			var size = Math.round(ime_scale * coords.radius * 2) + 1;
+			const left = Math.round(ime_scale * coords.x) - Math.round(ime_scale * coords.radius);
+			const top = Math.round(ime_scale * coords.y) - Math.round(ime_scale * coords.radius);
+			const size = Math.round(ime_scale * coords.radius * 2) + 1;
 
 			div.style.left = left + 'px';
 			div.style.top = top + 'px';
@@ -526,16 +526,16 @@ function ime_updateMap() {
 			div.className = 'previewPoly';
 			div.style.backgroundRepeat = 'no-repeat';
 
-			var points = coords.points;
-			var minX=0; var maxX=0; var minY=0; var maxY=0;
+			const points = coords.points;
+			let minX=0; let maxX=0; let minY=0; let maxY=0;
 			if (points.length>0) {
 				minX = points[0];
 				maxX = points[0];
 				minY = points[1];
 				maxY = points[1];
-				for (var j=2; j<points.length; j+=2) {
-					var x = points[j];
-					var y = points[j+1];
+				for (let j=2; j<points.length; j+=2) {
+					const x = points[j];
+					const y = points[j+1];
 					if (x<minX) minX = x;
 					if (x>maxX) maxX = x;
 					if (y<minY) minY = y;
@@ -554,39 +554,39 @@ function ime_updateMap() {
 }
 
 function ime_highlightMapCircle(div,radius,highlight) {
-	var background = "url('" + IME_CIRCLESCRIPT + '?' + (highlight ? 'active=1&' : '') + 'radius=' +  Math.round(ime_scale * radius) + "') no-repeat";
+	const background = "url('" + IME_CIRCLESCRIPT + '?' + (highlight ? 'active=1&' : '') + 'radius=' +  Math.round(ime_scale * radius) + "') no-repeat";
 	if (div.style.background != background) {
 		div.style.background = background;
 	}
 }
 
 function ime_highlightMapPoly(div,points,highlight) {
-	var minX=0; var minY=0;
+	let minX=0; let minY=0;
 	if (points.length>0) {
 		minX = points[0];
 		minY = points[1];
 		for (var j=2; j<points.length; j+=2) {
-			var x = points[j];
-			var y = points[j+1];
+			const x = points[j];
+			const y = points[j+1];
 			if (x<minX) minX = x;
 			if (y<minY) minY = y;
 		}
 	}
-	var convpoints = Array();
+	const convpoints = Array();
 	for(var j=0; j<points.length; j+=2) {
 		convpoints[j] = Math.round(ime_scale * points[j]) - Math.round(ime_scale * minX);
 		convpoints[j+1] = Math.round(ime_scale * points[j+1]) - Math.round(ime_scale * minY);
 	}
-	var background = "url('" + IME_POLYSCRIPT + '?' + (highlight ? 'active=1&' : '') + 'coords=' + convpoints.join("|") + "') no-repeat";
+	const background = "url('" + IME_POLYSCRIPT + '?' + (highlight ? 'active=1&' : '') + 'coords=' + convpoints.join("|") + "') no-repeat";
 	if (div.style.background != background) {
 		div.style.background = background;
 	}
 }
 
 function ime_highlightMap() {
-	for (var i=0; i<ime_areas.length; i++) {
-		var div = document.getElementById('imePreview' + i);
-		var area = ime_areas[i];
+	for (let i=0; i<ime_areas.length; i++) {
+		const div = document.getElementById('imePreview' + i);
+		const area = ime_areas[i];
 		if (div && area) {
 			if (i==ime_currentlyEditing) {
 				div.style.opacity = '0.9';
@@ -596,7 +596,7 @@ function ime_highlightMap() {
 				div.style.filter = 'alpha(opacity=75)'; // IE
 			}
 			if (area.shape == 'rect') {
-				var backgroundColor = (i==ime_currentlyEditing) ? 'red' : 'black';
+				const backgroundColor = (i==ime_currentlyEditing) ? 'red' : 'black';
 				if (div.style.backgroundColor != backgroundColor) div.style.backgroundColor = backgroundColor;
 			}
 			else if (area.shape == 'circle') {
@@ -610,20 +610,20 @@ function ime_highlightMap() {
 }
 
 function ime_updateSelectArea() {
-	var selectArea = document.ime.area;
+	const selectArea = document.ime.area;
 
 	while (selectArea.childNodes.length>0) {
 		selectArea.removeChild(selectArea.lastChild);
 	}
 
-	for (var i=0; i<ime_areas.length; i++) {
-		var option = document.createElement('option');
-		var area = ime_areas[i];
+	for (let i=0; i<ime_areas.length; i++) {
+		const option = document.createElement('option');
+		const area = ime_areas[i];
 			option.value = i;
 		while (option.childNodes.length>0) {
 			option.removeChild(option.lastChild);
 		}
-		var text = (area.title ? area.title : area.link) + ' [' + area.shape + ']';
+		const text = (area.title ? area.title : area.link) + ' [' + area.shape + ']';
 		option.appendChild(document.createTextNode(text));
 		if (i == ime_currentlyEditing) {
 			option.selected = 'selected';
@@ -635,7 +635,7 @@ function ime_updateSelectArea() {
 function ime_editArea(index) {
 	document.getElementById('imeProps').style.display = 'none';
 
-	var area = ime_areas[index];
+	const area = ime_areas[index];
 
 	if (area) {
 		ime_currentlyEditing = index;
@@ -662,7 +662,7 @@ function ime_editArea(index) {
 		document.ime.areaLink.value = area.link;
 		document.ime.areaTitle.value = area.title;
 
-		var coords = area.coords;
+		const coords = area.coords;
 		if (area.shape == 'rect') {
 			document.ime.areaRectLeft.value = coords.left;
 			document.ime.areaRectTop.value = coords.top;
@@ -675,7 +675,7 @@ function ime_editArea(index) {
 			document.ime.areaCircleRadius.value = coords.radius;
 		}
 		else if (area.shape == 'poly') {
-			var propsPolyCoords = document.getElementById('imePropsPolyCoords');
+			const propsPolyCoords = document.getElementById('imePropsPolyCoords');
 			if (propsPolyCoords.childNodes.length > 0) propsPolyCoords.removeChild(propsPolyCoords.lastChild);
 			propsPolyCoords.appendChild(document.createTextNode(area.coords.points.join(", ")));
 		}
@@ -690,11 +690,11 @@ function ime_deletePolyCoords() {
 }
 
 function ime_saveArea() {
-	var area = ime_areas[ime_currentlyEditing];
+	const area = ime_areas[ime_currentlyEditing];
 	area.link = document.ime.areaLink.value;
 	area.title = document.ime.areaTitle.value;
 
-	var coords = area.coords;
+	const coords = area.coords;
 	if (area.shape=='rect') {
 		coords.left = parseInt(document.ime.areaRectLeft.value);
 		coords.top = parseInt(document.ime.areaRectTop.value);
@@ -708,7 +708,7 @@ function ime_saveArea() {
 		coords.radius = parseInt(document.ime.areaCircleRadius.value);
 	}
 	else if (area.shape == 'poly') {
-		var propsPolyCoords = document.getElementById('imePropsPolyCoords');
+		const propsPolyCoords = document.getElementById('imePropsPolyCoords');
 		if (propsPolyCoords.childNodes.length > 0) propsPolyCoords.removeChild(propsPolyCoords.lastChild);
 		propsPolyCoords.appendChild(document.createTextNode(coords.points.join(", ")));
 	}
@@ -723,13 +723,13 @@ function ime_deleteArea() {
 	ime_areas.splice(ime_currentlyEditing,1);
 
 	// Remove preview div of the deleted area
-	var div = document.getElementById('imePreview' + ime_currentlyEditing);
+	let div = document.getElementById('imePreview' + ime_currentlyEditing);
 	if (div) {
 		div.parentNode.removeChild(div);
 	}
 
 	// Move ids of preview divs to fill the hole
-	for (var i=ime_currentlyEditing+1; i<ime_areas.length; i++) {
+	for (let i=ime_currentlyEditing+1; i<ime_areas.length; i++) {
 		div = document.getElementById('imePreview' + i);
 		if (div) {
 			div.id = 'imePreview' + (i-1);
@@ -746,15 +746,15 @@ function ime_deleteArea() {
 }
 
 function ime_importLines() {
-	var text = document.ime.importText.value;
-	var lines = text.split("\n");
+	const text = document.ime.importText.value;
+	const lines = text.split("\n");
 
-	for (var i=0; i<lines.length; i++) {
-		var rectMatch = /rect +(\d+) +(\d+) +(\d+) +(\d+) +\[\[([^|]*)(|(.*))?\]\]/i;
-		var circleMatch = /circle +(\d+) +(\d+) +(\d+) +\[\[([^|]*)(|(.*))?\]\]/i;
-		var polyMatch = /poly +(.*?) +\[\[([^|]*)(|(.*))?\]\]/i;
+	for (let i=0; i<lines.length; i++) {
+		const rectMatch = /rect +(\d+) +(\d+) +(\d+) +(\d+) +\[\[([^|]*)(|(.*))?\]\]/i;
+		const circleMatch = /circle +(\d+) +(\d+) +(\d+) +\[\[([^|]*)(|(.*))?\]\]/i;
+		const polyMatch = /poly +(.*?) +\[\[([^|]*)(|(.*))?\]\]/i;
 
-		var line = lines[i];
+		const line = lines[i];
 
 		if (rectMatch.test(line)) {
 			var results = rectMatch.exec(line);
@@ -781,7 +781,7 @@ function ime_importLines() {
 			var results = polyMatch.exec(line);
 			var area = new ime_Area("poly");
 			area.coords.points = results[1].replace(/ +/," ").split(" ");
-			for (var j=0; j<area.coords.points.length; j++) {
+			for (let j=0; j<area.coords.points.length; j++) {
 				area.coords.points[j] = parseInt(area.coords.points[j]);
 			}
 			area.link = results[2];
@@ -819,7 +819,7 @@ function ime_removeOtherUIElements() {
 */
 function ime_findATag(node) {
 	// We just look at the first child until there is none or it is an <a> tag
-	var a = node;
+	let a = node;
 	while (a != null && a.nodeName.toUpperCase() != 'A') {
 		a = a.firstChild;
 	}
@@ -827,9 +827,9 @@ function ime_findATag(node) {
 }
 
 function ime_callHandler( element ) {
-	var handlerName = $( element ).data( 'handler-name' );
-	var handlerArgs = $( element ).data( 'handler-args' );
-	var handler = window[ handlerName ];
+	const handlerName = $( element ).data( 'handler-name' );
+	const handlerArgs = $( element ).data( 'handler-args' );
+	const handler = window[ handlerName ];
 	if ( typeof handler === 'function' ) {
 		handler.apply( window, handlerArgs );
 	}

@@ -1,7 +1,7 @@
 {
 	"root": true,
 	"extends": [
-		"wikimedia/client-es5",
+		"wikimedia/client",
 		"wikimedia/jquery",
 		"wikimedia/mediawiki"
 	],
@@ -45,6 +45,7 @@
 		"space-infix-ops": "off",
 		"space-in-parens": "off",
 		"space-unary-ops": "off",
-		"unicorn/prefer-string-slice": "off"
+		"unicorn/prefer-string-slice": "off",
+		"no-var": "warn"
 	}
 }
