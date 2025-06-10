@@ -1,5 +1,7 @@
 <?php
 
+namespace MediaWiki\Extension\ImageMapEdit;
+
 use MediaWiki\MediaWikiServices;
 
 class ImageMapEdit {
