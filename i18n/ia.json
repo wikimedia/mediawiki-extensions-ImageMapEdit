@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"imagemapedit-desc": "Permitte le creation interactive de imagines incastrate con mappas de imagine.",
+	"imagemapedit-bottomleft": "Basso sinistre",
+	"imagemapedit-bottomright": "Basso dextre",
+	"imagemapedit-circle": "circulo"
+}
