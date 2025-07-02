@@ -3,10 +3,11 @@
 		"authors": [
 			"Anterdc99",
 			"Hua Jing",
+			"Huajing",
 			"Peterxy12"
 		]
 	},
-	"imagemapedit-desc": "允许使用图像地图交互式创建嵌入图像。",
+	"imagemapedit-desc": "交互地生成含有图像映射的嵌入图像。",
 	"imagemapedit-bottomleft": "左下角",
 	"imagemapedit-bottomright": "右下角",
 	"imagemapedit-circle": "circle（圆形区域）",
