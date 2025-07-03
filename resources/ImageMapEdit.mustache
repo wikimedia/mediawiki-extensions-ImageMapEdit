@@ -72,32 +72,46 @@
             <legend>{{imagemapedit-preferences}}</legend>
             <div>
                 <label for="ime_imageDescription">{{imagemapedit-imagedescription}}</label>
-
                 <br />
                 <input id="ime_imageDescription" name="imageDescription" data-handler-type="change" data-handler-name="ime_updateResult" data-handler-args="[]" />
+                <br />
+                <label for="ime_imageAltText">{{imagemapedit-imagealttext}}</label>
+                <br />
+                <input id="ime_imageAltText" name="imageAltText" data-handler-type="change" data-handler-name="ime_updateResult" data-handler-args="[]" />
             </div>
             <div>
-                <label style="display:block">{{imagemapedit-infolinkposition}}</label>
-                <div>
-                    <input type="radio" name="imageDescriptionPos" value="bottom-left" data-handler-type="change" data-handler-name="ime_updateResult" data-handler-args="[]" checked="checked" id="ime_imageDescriptionPos_bottomleft" />
-                    <label for="ime_imageDescriptionPos_bottomleft"><span>{{imagemapedit-bottomleft}}</span> (<span>{{imagemapedit-default}}</span>)</label>
-                </div>
-                <div>
-                    <input type="radio" name="imageDescriptionPos" value="bottom-right" data-handler-type="change" data-handler-name="ime_updateResult" data-handler-args="[]" id="ime_imageDescriptionPos_bottomright" />
-                    <label for="ime_imageDescriptionPos_bottomright">{{imagemapedit-bottomright}}</label>
-                </div>
-                <div>
-                    <input type="radio" name="imageDescriptionPos" value="top-left" data-handler-type="change" data-handler-name="ime_updateResult" data-handler-args="[]" id="ime_imageDescriptionPos_topleft" />
-                    <label for="ime_imageDescriptionPos_topleft">{{imagemapedit-topleft}}</label>
-                </div>
-                <div>
-                    <input type="radio" name="imageDescriptionPos" value="top-right" data-handler-type="change" data-handler-name="ime_updateResult" data-handler-args="[]" id="ime_imageDescriptionPos_topright" />
-                    <label for="ime_imageDescriptionPos_topright">{{imagemapedit-topright}}</label>
-                </div>
-                <div>
-                    <input type="radio" name="imageDescriptionPos" value="none" data-handler-type="change" data-handler-name="ime_updateResult" data-handler-args="[]" id="ime_imageDescriptionPos_none" />
-                    <label for="ime_imageDescriptionPos_none">{{imagemapedit-nolink}}</label>
-                </div>
+                <label for="ime_imageDescriptionPos">{{imagemapedit-infolinkposition}}</label>
+                <br />
+                <select id="ime_imageDescriptionPos" name="imageDescriptionPos" data-handler-type="change" data-handler-name="ime_updateResult" data-handler-args="[]">
+                    <option value="bottom-left" selected="selected">{{imagemapedit-bottomleft}}</option>
+                    <option value="bottom-right">{{imagemapedit-bottomright}}</option>
+                    <option value="top-left">{{imagemapedit-topleft}}</option>
+                    <option value="top-right">{{imagemapedit-topright}}</option>
+                    <option value="none">{{imagemapedit-nolink}}</option>
+                </select>
+                <br />
+                <label for="ime_imageDisplayDimensions">{{imagemapedit-imagedisplaydimensions}}</label>
+                <br />
+                <input id="ime_imageDisplayDimensions" name="imageDisplayDimensions" data-handler-type="change" data-handler-name="ime_updateResult" data-handler-args="[]" />
+            </div>
+            <div>
+                <label for="ime_imageDisplayPosition">{{imagemapedit-imagedisplayposition}}</label>
+                <br />
+                <select id="ime_imageDisplayPosition" name="imageDisplayPosition" data-handler-type="change" data-handler-name="ime_updateResult" data-handler-args="[]">
+                    <option value="" selected="selected">{{imagemapedit-notspecified}}</option>
+                    <option value="right">{{imagemapedit-imagedisplayposition-right}}</option>
+                    <option value="center">{{imagemapedit-imagedisplayposition-center}}</option>
+                    <option value="left">{{imagemapedit-imagedisplayposition-left}}</option>
+                </select>
+                <br />
+                <label for="ime_imageDisplayType">{{imagemapedit-imagedisplaytype}}</label>
+                <br />
+                <select id="ime_imageDisplayType" name="imageDisplayType" data-handler-type="change" data-handler-name="ime_updateResult" data-handler-args="[]">
+                    <option value="" selected="selected">{{imagemapedit-notspecified}}</option>
+                    <option value="thumbnail">{{imagemapedit-imagedisplaytype-thumbnail}}</option>
+                    <option value="border">{{imagemapedit-imagedisplaytype-border}}</option>
+                    <option value="frameless">{{imagemapedit-imagedisplaytype-frameless}}</option>
+                </select>
             </div>
             <div style="clear:both"></div>
         </fieldset>
