@@ -30,6 +30,10 @@
 	margin-right: 1em;
 }
 
+.ime-fieldset-div-floatleft select {
+	width: 8em;
+}
+
 form[ name='ime' ] fieldset fieldset legend {
 	padding: 0 0.5ex;
 	font-weight: bold;
@@ -42,7 +46,6 @@ form[ name='ime' ] a {
 
 /* stylelint-disable selector-max-id */
 #imeProps {
-	float: inline-start;
 	margin: 0.5ex;
 	padding: 0 1ex 1ex;
 }
@@ -53,18 +56,16 @@ form[ name='ime' ] a {
 	padding: 0 1ex 1ex;
 }
 
-#ime_areaLink {
-	width: 10em;
-}
-
+#ime_areaLink,
 #ime_areaTitle {
 	width: 10em;
 }
 
-#imePropsRect > input {
-	width: 4em;
+#ime_imageDisplayDimensions {
+	width: 8em;
 }
 
+#imePropsRect > input,
 #imePropsCircle > input {
 	width: 4em;
 }

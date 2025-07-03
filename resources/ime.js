@@ -193,7 +193,6 @@ function ime_init2() {
 		// * imagemapedit-circlechoose1
 		// * imagemapedit-circlechoose2
 		// * imagemapedit-coordinates
-		// * imagemapedit-default
 		// * imagemapedit-deletearea
 		// * imagemapedit-deletecoordinates
 		// * imagemapedit-display-interface
@@ -201,7 +200,17 @@ function ime_init2() {
 		// * imagemapedit-error-imagenotfound
 		// * imagemapedit-generatedwikicode
 		// * imagemapedit-hidetextbox
+		// * imagemapedit-imagealttext
 		// * imagemapedit-imagedescription
+		// * imagemapedit-imagedisplaydimensions
+		// * imagemapedit-imagedisplayposition
+		// * imagemapedit-imagedisplayposition-left
+		// * imagemapedit-imagedisplayposition-center
+		// * imagemapedit-imagedisplayposition-right
+		// * imagemapedit-imagedisplaytype
+		// * imagemapedit-imagedisplaytype-thumbnail
+		// * imagemapedit-imagedisplaytype-border
+		// * imagemapedit-imagedisplaytype-frameless
 		// * imagemapedit-import
 		// * imagemapedit-importareas
 		// * imagemapedit-infolinkposition
@@ -209,6 +218,7 @@ function ime_init2() {
 		// * imagemapedit-linktitle
 		// * imagemapedit-newarea
 		// * imagemapedit-nolink
+		// * imagemapedit-notspecified
 		// * imagemapedit-optional
 		// * imagemapedit-poly
 		// * imagemapedit-polychoose
@@ -238,6 +248,9 @@ function ime_init2() {
 			ime_editArea( this.selectedIndex );
 		});
 	}
+
+	// Default image configs
+	document.ime.imageDisplayDimensions.value = img.width + 'px';
 }
 
 /*
@@ -457,18 +470,25 @@ function ime_updateAreas() {
 }
 
 function ime_updateResult() {
-	const arr = document.ime.imageDescriptionPos;
-	let imageDescriptionPos = arr[0].value;
-	for ( let i=1; i<arr.length; i++ ) {
-		if (arr[i].checked) {
-			imageDescriptionPos = arr[i].value;
-			break;
+	let imageDescriptionPos = document.ime.imageDescriptionPos.value;
+	let imeDisplayConfigs = '';
+	[
+		'imageDisplayDimensions',
+		'imageDisplayPosition',
+		'imageDisplayType'
+	].forEach( function( prop ) {
+		if ( document.ime[prop].value !== '' ) {
+			imeDisplayConfigs += '|' + document.ime[prop].value;
 		}
-	}
+	});
 
 	const result = Array();
 	result.push('<imagemap>');
-	result.push( mw.config.get( 'wgPageName' ) + '|' + document.ime.imageDescription.value );
+	result.push(
+		mw.config.get( 'wgPageName' ) + imeDisplayConfigs +
+		'|alt=' + document.ime.imageAltText.value +
+		'|' + document.ime.imageDescription.value
+	);
 	result.push('');
 	for ( let i=0; i<ime_areas.length; i++ ) {
 		const coords = ime_areas[i].coords;
