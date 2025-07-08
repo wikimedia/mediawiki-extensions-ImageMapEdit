@@ -5,8 +5,8 @@
 		]
 	},
 	"imagemapedit-desc": "Permitte le creation interactive de imagines incastrate con mappas de imagine.",
-	"imagemapedit-bottomleft": "Basso sinistre",
-	"imagemapedit-bottomright": "Basso dextre",
+	"imagemapedit-bottomleft": "basso sinistre",
+	"imagemapedit-bottomright": "basso dextre",
 	"imagemapedit-circle": "circulo",
 	"imagemapedit-circlechoose1": "Selige con le button sinistre del mouse",
 	"imagemapedit-circlechoose2": "Selige con le button dextre del mouse",
@@ -42,5 +42,6 @@
 	"imagemapedit-recttop": "alto",
 	"imagemapedit-showtextbox": "Monstrar quadro de texto",
 	"imagemapedit-topleft": "Alto sinistre",
-	"imagemapedit-topright": "Alto dextre"
+	"imagemapedit-topright": "Alto dextre",
+	"imagemapedit-imagealttext": "Texto alternative"
 }
