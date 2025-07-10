@@ -20,5 +20,7 @@
 	"imagemapedit-rectright": "Riets",
 	"imagemapedit-recttop": "uewen",
 	"imagemapedit-topleft": "uewe lénks",
-	"imagemapedit-topright": "uewe riets"
+	"imagemapedit-topright": "uewe riets",
+	"imagemapedit-imagedisplaytype-thumbnail": "Miniaturbild",
+	"imagemapedit-notspecified": "net uginn"
 }
