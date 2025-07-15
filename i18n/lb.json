@@ -9,7 +9,9 @@
 	"imagemapedit-coordinates": "Koordinaten",
 	"imagemapedit-deletecoordinates": "All Koordinate läschen",
 	"imagemapedit-imagedescription": "Bildbeschreiwung",
+	"imagemapedit-imagedisplaytype-thumbnail": "Miniaturbild",
 	"imagemapedit-import": "Importéieren",
+	"imagemapedit-notspecified": "net uginn",
 	"imagemapedit-optional": "fakultativ",
 	"imagemapedit-preferences": "Allgemeng Astellungen",
 	"imagemapedit-position": "Positioun",
@@ -19,7 +21,5 @@
 	"imagemapedit-rectright": "Riets",
 	"imagemapedit-recttop": "uewen",
 	"imagemapedit-topleft": "uewe lénks",
-	"imagemapedit-topright": "uewe riets",
-	"imagemapedit-imagedisplaytype-thumbnail": "Miniaturbild",
-	"imagemapedit-notspecified": "net uginn"
+	"imagemapedit-topright": "uewe riets"
 }
