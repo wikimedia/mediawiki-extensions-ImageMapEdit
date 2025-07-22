@@ -6,7 +6,6 @@
 		]
 	},
 	"imagemapedit-desc": "브라우저에서 이미지 맵을 생성합니다.",
-	"imagemapedit-position": "위치",
 	"imagemapedit-bottomleft": "왼쪽 아래",
 	"imagemapedit-bottomright": "오른쪽 아래",
 	"imagemapedit-imagealttext": "대체 텍스트",
@@ -22,6 +21,7 @@
 	"imagemapedit-infolinkposition": "정보 링크 위치",
 	"imagemapedit-nolink": "정보 링크 없음",
 	"imagemapedit-notspecified": "지정되지 않음",
+	"imagemapedit-position": "위치",
 	"imagemapedit-topleft": "왼쪽 위",
 	"imagemapedit-topright": "오른쪽 위"
 }
