@@ -470,13 +470,13 @@ function ime_updateAreas() {
 }
 
 function ime_updateResult() {
-	let imageDescriptionPos = document.ime.imageDescriptionPos.value;
+	const imageDescriptionPos = document.ime.imageDescriptionPos.value;
 	let imeDisplayConfigs = '';
 	[
 		'imageDisplayDimensions',
 		'imageDisplayPosition',
 		'imageDisplayType'
-	].forEach( function( prop ) {
+	].forEach( ( prop ) => {
 		if ( document.ime[prop].value !== '' ) {
 			imeDisplayConfigs += '|' + document.ime[prop].value;
 		}
