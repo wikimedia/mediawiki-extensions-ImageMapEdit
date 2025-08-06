@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
+			"Neriah",
 			"YaronSh"
 		]
 	},
@@ -14,6 +15,11 @@
 	"imagemapedit-editarea": "עריכת אזור",
 	"imagemapedit-hidetextbox": "הסתרת תיבת טקסט",
 	"imagemapedit-imagedescription": "תיאור התמונה",
+	"imagemapedit-imagedisplayposition-center": "מרכז",
+	"imagemapedit-imagedisplayposition-right": "יישור לימין",
+	"imagemapedit-imagedisplaytype-thumbnail": "ממוזער",
+	"imagemapedit-imagedisplaytype-border": "גבול",
+	"imagemapedit-imagedisplaytype-frameless": "ללא מסגרת",
 	"imagemapedit-import": "יבוא",
 	"imagemapedit-linktarget": "יעד הקישור",
 	"imagemapedit-linktitle": "כותרת הקישור",
