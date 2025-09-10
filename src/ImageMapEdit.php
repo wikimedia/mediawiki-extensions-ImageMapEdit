@@ -29,7 +29,6 @@ class ImageMapEdit {
 	}
 
 	/**
-	 *
 	 * @param OutputPage &$outputPage
 	 * @param Skin &$skin
 	 *
