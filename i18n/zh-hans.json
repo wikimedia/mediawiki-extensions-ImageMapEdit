@@ -2,10 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Anterdc99",
+			"GuoPC",
 			"Hua Jing",
 			"Huajing",
-			"Peterxy12",
-			"GuoPC"
+			"Peterxy12"
 		]
 	},
 	"imagemapedit-desc": "交互地生成含有图像映射的嵌入图像。",
