@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hedda"
+			"Hedda",
+			"SaldırganSincap"
 		]
 	},
-	"imagemapedit-desc": "Tarayıcıda görüntü haritaları oluşturun."
+	"imagemapedit-desc": "Resim haritalarıyla gömülü resimlerin etkileşimli oluşturulmasına olanak tanır."
 }
