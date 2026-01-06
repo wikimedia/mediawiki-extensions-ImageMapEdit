@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hallo Welt! GmbH <support@hallowelt.com>"
+			"Hallo Welt! GmbH <support@hallowelt.com>",
+			"Umherirrender"
 		]
 	},
-	"imagemapedit-desc": "Description message for the ImageMapEdit extension.",
+	"imagemapedit-desc": "{{desc|name=ImageMapEdit|url=https://www.mediawiki.org/wiki/Extension:ImageMapEdit}}",
 	"imagemapedit-bottomleft": "Label for '{{msg-mw|imagemapedit-bottomleft}}' position option for the info link.",
 	"imagemapedit-bottomright": "Label for '{{msg-mw|imagemapedit-bottomright}}' position option for the info link.",
 	"imagemapedit-circle": "Label for creating a circle area.",
@@ -40,8 +41,8 @@
 	"imagemapedit-optional": "Text indicating a field is optional.",
 	"imagemapedit-poly": "Label for creating a polygon area.",
 	"imagemapedit-polychoose": "Instruction for adding points to a polygon.",
-	"imagemapedit-position": "Label for X, Y position inputs (e.g., for circle center).",
 	"imagemapedit-preferences": "Legend for the '{{msg-mw|imagemapedit-preferences}}' fieldset.",
+	"imagemapedit-position": "Label for X, Y position inputs (e.g., for circle center).",
 	"imagemapedit-radius": "Label for the radius input of a circle.",
 	"imagemapedit-rect": "Label for creating a rectangle area. 'rect' is the shape type.",
 	"imagemapedit-rectbottom": "Label for the bottom coordinate of a rectangle.",
