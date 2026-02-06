@@ -7,6 +7,8 @@
 		]
 	},
 	"imagemapedit-desc": "מאפשר יצירה אינטראקטיבית של תמונות מוטמעות עם מפות תמונה.",
+	"imagemapedit-bottomleft": "שמאל למטה",
+	"imagemapedit-bottomright": "ימין למטה",
 	"imagemapedit-circle": "עיגול",
 	"imagemapedit-coordinates": "נקודות ציון",
 	"imagemapedit-deletearea": "מחיקת האזור שנבחר",
@@ -31,5 +33,7 @@
 	"imagemapedit-rectleft": "שמאל",
 	"imagemapedit-rectright": "ימין",
 	"imagemapedit-recttop": "עליון",
-	"imagemapedit-showtextbox": "הצגת תיבת טקסט"
+	"imagemapedit-showtextbox": "הצגת תיבת טקסט",
+	"imagemapedit-topleft": "שמאל למעלה",
+	"imagemapedit-topright": "ימין למעלה"
 }
