@@ -31,5 +31,9 @@
 	"imagemapedit-rectleft": "שמאל",
 	"imagemapedit-rectright": "ימין",
 	"imagemapedit-recttop": "עליון",
-	"imagemapedit-showtextbox": "הצגת תיבת טקסט"
+	"imagemapedit-showtextbox": "הצגת תיבת טקסט",
+	"imagemapedit-bottomleft": "שמאל למטה",
+	"imagemapedit-bottomright": "ימין למטה",
+	"imagemapedit-topleft": "שמאל למעלה",
+	"imagemapedit-topright": "ימין למעלה"
 }
