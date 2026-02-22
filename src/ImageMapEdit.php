@@ -4,20 +4,20 @@ namespace MediaWiki\Extension\ImageMapEdit;
 
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
-use MediaWiki\Parser\ParserOutput;
+use MediaWiki\Skin\Skin;
 
 class ImageMapEdit {
 
 	/**
-	 * @param ParserOutput &$parserOutput
+	 * @param OutputPage $out
 	 * @param string &$text
-	 * @return void
+	 * @return bool
 	 */
-	public static function onOutputPageBeforeHTML( &$parserOutput, &$text ) {
-		$currentTitle = $parserOutput->getTitle();
+	public static function onOutputPageBeforeHTML( $out, &$text ) {
+		$currentTitle = $out->getTitle();
 		if ( $currentTitle === null
 			|| $currentTitle->getNamespace() != NS_FILE
-			|| $parserOutput->getRequest()->getVal( 'action', 'view' ) != 'view' ) {
+			|| $out->getRequest()->getVal( 'action', 'view' ) != 'view' ) {
 			return true;
 		}
 		$repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
