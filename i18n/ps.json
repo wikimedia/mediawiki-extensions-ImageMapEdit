@@ -45,5 +45,12 @@
 	"imagemapedit-recttop": "پورته",
 	"imagemapedit-showtextbox": "ليک بکس ښودل",
 	"imagemapedit-topleft": "پورته کيڼ",
-	"imagemapedit-topright": "پورته ښي"
+	"imagemapedit-topright": "پورته ښي",
+	"imagemapedit-desc": "د انځور نخشو سره د وړاندې‌شوي انځورونو متقابل جوړولو ته اجازه ورکوي.",
+	"imagemapedit-display-interface": "انځور نخشې سره انځور وړانډې‌کول",
+	"imagemapedit-error-imagenotfound": "انځورنخشې‌سمون: د مخ جوړښت کې انځور نشي موندل کېدی.",
+	"imagemapedit-generatedwikicode": "د انځور لپاره وړاندې‌شوی زېږېدلی کوډ",
+	"imagemapedit-imagedisplayposition-left": "کيڼ خوا پرليکه‌کول",
+	"imagemapedit-imagedisplayposition-right": "ښي خوا پرليکه‌کول",
+	"imagemapedit-importareas": "د شته انځور نخشې وړاندې‌شوي کوډ څخه انځور‌نخشې د سيمې رالېږدول"
 }
